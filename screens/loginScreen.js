@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { useEffect, useState } from 'react'
-import { View, Text, StyleSheet, KeyboardAvoidingView } from 'react-native'
+import { View, Text, StyleSheet, KeyboardAvoidingView, TouchableWithoutFeedback } from 'react-native'
 import { Button , Input, Image} from 'react-native-elements';
 import { auth } from '../firebase';
 
@@ -25,6 +25,8 @@ const loginScreen = ({navigation}) => {
 
     return (
         <KeyboardAvoidingView behavior='padding' style={styles.container}>
+        <TouchableWithoutFeedback keyboard="dismiss">
+                    <>
             <StatusBar style="light"/>
 
             <Image 
@@ -34,23 +36,28 @@ const loginScreen = ({navigation}) => {
                 style={{width:200, height:200}}
             />
             <View style={styles.imputContainer}>
-                <Input 
-                    placeholder="Email" 
-                    autoFocus type="Email" 
-                    value={email} 
-                    onChangeText={text=>setEmail(text)}
-                />
-                <Input 
-                    placeholder="Password" 
-                    secureTextEntry type="password" 
-                    value={password}
-                    onChangeText={text=>setPassword(text)}
-                    onSubmitEditing={signIn}
+                
+                    <Input 
+                        placeholder="Email" 
+                        autoFocus type="Email" 
+                        value={email} 
+                        onChangeText={text=>setEmail(text)}
                     />
+                    <Input 
+                        placeholder="Password" 
+                        secureTextEntry type="password" 
+                        value={password}
+                        onChangeText={text=>setPassword(text)}
+                        onSubmitEditing={signIn}
+                        />
+                        
             </View>
             <Button containerStyle={styles.button} onPress={signIn} title="Login"/>
             <Button onPress={()=> navigation.navigate("Register")} containerStyle={styles.button} type="outline" title="Register"/>
+            
             <View style={{height: 100}}></View>
+            </>
+                </TouchableWithoutFeedback>
         </KeyboardAvoidingView>
     )
 }

@@ -93,8 +93,10 @@ const chatScreen = ({navigation, route}) => {
                 keyboardVerticalOffset={90}>
                 <TouchableWithoutFeedback keyboard="dismiss">
                 <>
-                <ScrollView contentContainerStyle={{paddingTop:15}}>
-                    {messages.map(({ id, data }) => 
+                <ScrollView 
+                    contentContainerStyle={{paddingTop:15}}>
+                    {  
+                        messages.slice(0).reverse().map(({ id, data }) => 
                         data.email === auth.currentUser.email ? (
                             <View key={id} style={styles.reciever}>
                                 <Avatar
@@ -108,7 +110,7 @@ const chatScreen = ({navigation, route}) => {
                                     alignSelf="flex-end"
                                     rounded
                                     size={30}
-                                    bottom={-15} 
+                                    bottom={-15}
                                     right={-5}
                                     source={{
                                         uri: data.photoURL
