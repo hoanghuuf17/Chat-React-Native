@@ -108,7 +108,7 @@ const chatScreen = ({navigation, route}) => {
                                     alignSelf="flex-end"
                                     rounded
                                     size={30}
-                                    bottom={-15}
+                                    bottom={-15} 
                                     right={-5}
                                     source={{
                                         uri: data.photoURL
